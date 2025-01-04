@@ -1,0 +1,15 @@
+name: Keep Codespaces Alive
+
+on:
+  schedule:
+    # 定时触发：每 25 分钟运行一次
+    - cron: '*/60 * * * *'
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Keep-Alive Request
+        run: |
+          curl -s -o /dev/null -w "%{http_code}" https://orange-xylophone-q7p6xww9gq96364qg-40631.app.github.dev
